@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from wishlist.models import BarangWishlist
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.core import serializers
 
 from django.shortcuts import redirect
@@ -25,6 +25,14 @@ def show_wishlist(request):
 
     }
     return render(request, "wishlist.html", context)
+
+def wishlist_ajax(request):
+    return render(request, "wishlist_ajax.html")
+    # def get(self, request, *args, **kwargs):
+    #     if request.is_ajax():
+    #         data_barang_wishlist = BarangWishlist.objects.all()
+    #         print(data_barang_wishlist)
+    #     return JsonResponse({"message : salah"})
 
 def show_xml(request):
     data = BarangWishlist.objects.all()
